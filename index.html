@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Sorting Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Color Sorting Game</h1>
+        <p class="game-description">Drag and drop the color items to the matching color boxes!</p>
+        
+        <div class="difficulty-selector">
+            <button id="easy-btn" class="difficulty-btn selected">Easy</button>
+            <button id="medium-btn" class="difficulty-btn">Medium</button>
+            <button id="hard-btn" class="difficulty-btn">Hard</button>
+        </div>
+        
+        <div class="controls">
+            <button id="new-game-btn">New Game</button>
+            <button id="settings-btn">Settings</button>
+            <button id="progress-btn">Progress Report</button>
+        </div>
+        
+        <div class="game-info">
+            <div class="timer">Time: <span id="time-display">00:00</span></div>
+            <div class="score">Score: <span id="score-display">0</span></div>
+        </div>
+        
+        <div class="game-area" id="game-area">
+            <div class="objects-container" id="objects-container"></div>
+            
+            <div class="target-container">
+                <div class="target" data-category="red" style="background-color: #ff6b6b;">
+                    <div class="target-header">Red</div>
+                    <div class="target-area" data-category="red"></div>
+                </div>
+                <div class="target" data-category="blue" style="background-color: #4ecdc4;">
+                    <div class="target-header">Blue</div>
+                    <div class="target-area" data-category="blue"></div>
+                </div>
+                <div class="target" data-category="yellow" style="background-color: #ffbe76;">
+                    <div class="target-header">Yellow</div>
+                    <div class="target-area" data-category="yellow"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+    </div>
+    
+    <div class="victory-screen" id="victory-screen">
+        <div class="victory-content">
+            <h2>Congratulations!</h2>
+            <p>You sorted all colors correctly!</p>
+            <p>Time: <span id="final-time">00:00</span></p>
+            <p>Score: <span id="final-score">0</span></p>
+            <button id="play-again-btn">Play Again</button>
+        </div>
+    </div>
+    
+    <div class="level-up-screen" id="level-up-screen">
+        <div class="level-up-content">
+            <h2>Great Progress!</h2>
+            <p id="level-up-message"></p>
+            <div class="level-up-options">
+                <button id="accept-level-up">Yes, Upgrade Level</button>
+                <button id="decline-level-up">No, Stay Here</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="settings-panel" id="settings-panel">
+        <h3>Game Settings</h3>
+        <div class="settings-row">
+            <label for="sound-toggle">Sound:</label>
+            <input type="checkbox" id="sound-toggle" checked>
+        </div>
+        <div class="settings-row">
+            <label for="music-toggle">Music:</label>
+            <input type="checkbox" id="music-toggle" checked>
+        </div>
+        <div class="settings-row">
+            <label for="auto-level-up">Auto Level Progression:</label>
+            <input type="checkbox" id="auto-level-up" checked>
+        </div>
+        <button id="save-settings">Save Settings</button>
+    </div>
+    
+    <div class="progress-panel" id="progress-panel">
+        <h3>Progress Report</h3>
+        <div class="progress-data">
+            <p>Games Played: <span id="games-played">0</span></p>
+            <p>Best Time: <span id="best-time">00:00</span></p>
+            <p>Highest Score: <span id="high-score">0</span></p>
+            <p>Accuracy: <span id="accuracy">0%</span></p>
+            <p>Current Level: <span id="current-level">Easy</span></p>
+        </div>
+        <button id="close-progress">Close</button>
+    </div>
+    
+    <div class="sound-toggle-btn" id="sound-toggle-btn">
+        <i class="fas fa-volume-up"></i>
+    </div>
+    
+    <audio id="correct-sound" src="sounds/correct.mp3" preload="auto"></audio>
+    <audio id="wrong-sound" src="sounds/wrong.mp3" preload="auto"></audio>
+    <audio id="victory-sound" src="sounds/victory.mp3" preload="auto"></audio>
+    <audio id="background-music" loop src="sounds/background.mp3" preload="auto"></audio>
+    
+    <script src="script.js"></script>
+</body>
+</html>

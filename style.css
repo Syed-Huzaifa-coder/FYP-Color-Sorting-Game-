@@ -1,0 +1,361 @@
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background-color: #f0f8ff;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.game-container {
+    width: 100%;
+    max-width: 800px;
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #5d9b9b;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.game-description {
+    text-align: center;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+button {
+    background-color: #7ebdc2;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+button:hover {
+    background-color: #5d9b9b;
+    transform: scale(1.05);
+}
+
+.difficulty-selector {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.difficulty-btn {
+    background-color: #b5e0e0;
+    color: #3a7a7a;
+}
+
+.difficulty-btn.selected {
+    background-color: #3a7a7a;
+    color: white;
+}
+
+.game-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #5d9b9b;
+}
+
+.game-area {
+    width: 100%;
+    min-height: 400px;
+    background-color: #e6f7ff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.objects-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    min-height: 120px;
+}
+
+.color-object {
+    width: 80px;
+    height: 80px;
+    border-radius: 15px;
+    cursor: grab;
+    transition: transform 0.2s;
+    user-select: none;
+    touch-action: none;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.color-object:hover {
+    transform: scale(1.1);
+}
+
+.color-object:active {
+    cursor: grabbing;
+}
+
+.target-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+}
+
+.target {
+    flex: 1;
+    min-width: 150px;
+    min-height: 150px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+}
+
+.target-header {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.target-area {
+    width: 100%;
+    min-height: 100px;
+    border: 3px dashed rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+}
+
+.progress-container {
+    width: 100%;
+    height: 20px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #7ebdc2;
+    width: 0%;
+    transition: width 0.5s ease;
+}
+
+.victory-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s;
+}
+
+.victory-screen.show {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.victory-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
+
+.victory-content h2 {
+    color: #5d9b9b;
+    margin-top: 0;
+}
+
+.victory-content button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+}
+
+.level-up-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s;
+}
+
+.level-up-screen.show {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.level-up-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
+
+.level-up-content h2 {
+    color: #5d9b9b;
+    margin-top: 0;
+}
+
+.level-up-options {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.level-up-options button {
+    padding: 10px 15px;
+    font-size: 16px;
+}
+
+#accept-level-up {
+    background-color: #4CAF50;
+}
+
+#decline-level-up {
+    background-color: #f44336;
+}
+
+.settings-panel, .progress-panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    z-index: 1002;
+    max-width: 400px;
+    width: 90%;
+    display: none;
+}
+
+.settings-panel h3, .progress-panel h3 {
+    color: #5d9b9b;
+    margin-top: 0;
+    text-align: center;
+}
+
+.settings-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.progress-data {
+    margin-bottom: 20px;
+}
+
+.progress-data p {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sound-toggle-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    z-index: 100;
+}
+
+.sound-toggle-btn i {
+    font-size: 24px;
+    color: #5d9b9b;
+}
+
+@media (max-width: 768px) {
+    .color-object {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .target-container {
+        flex-direction: column;
+    }
+    
+    .target {
+        min-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .color-object {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .controls, .difficulty-selector {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    button {
+        width: 100%;
+        max-width: 200px;
+    }
+    
+    .level-up-options {
+        flex-direction: column;
+    }
+}
